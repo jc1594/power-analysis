@@ -26,9 +26,9 @@ const AuthProvider = ({ children }) => {
     }
 
     const clearData = () => {
-        localStorage.removeItem(AUTH_KEY);
+        setTimeout(() => {localStorage.removeItem(AUTH_KEY);
         window.location.reload(false); //Not the best way to do this, but effective
-        alert(`Download Completed`);
+        alert(`Download Completed`)},1000)
 
     };
 

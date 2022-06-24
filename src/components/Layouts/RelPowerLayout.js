@@ -5,7 +5,7 @@ import LoadFileForm from '../forms/loadFileForm';
 import AuthContext from '../../helpers/auth/authContext';
 
 export default function RelPowerLayout() {
-  const { auth, setData } = React.useContext(AuthContext);
+  const { auth, setData, clearData } = React.useContext(AuthContext);
 
   let csvData = (auth) ? auth.data : '';
 
@@ -17,6 +17,7 @@ export default function RelPowerLayout() {
   const DownloadButton = () => {
     if(csvData) {
       return <CSVLink
+        onClick={clearData}
         className="Download-button"
         data={csvData}
         filename={filename}>
