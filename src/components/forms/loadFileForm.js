@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../App.css';
-import authContext from '../../helpers/authContext';
+import authContext from '../../helpers/auth/authContext';
 import FileUploader from '../../helpers/fileUploader';
 
 const LoadFileForm = ({ callback }) => {

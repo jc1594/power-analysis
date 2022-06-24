@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthContext from './authContext';
-import { CsvHelper } from'./csvHelper';
-import powerAnalysis from './powerAnalysis';
+import { CsvHelper } from '../csvHelper';
+import powerAnalysis from '../powerAnalysis/powerAnalysis';
 
 const AUTH_KEY = 'auth';
 
@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
     };
 
     //add function here to call from callback that sets data
-    const setData = (data, params) => {
+    const setData = (data) => {
         let powerData = powerAnalysis(data);
         let auth = {'data':powerData};
         localStorage.setItem(AUTH_KEY, JSON.stringify(auth));

@@ -2,18 +2,19 @@ import React from 'react';
 import '../../App.css'
 import { CSVLink } from 'react-csv'
 import LoadFileForm from '../forms/loadFileForm';
-import AuthContext from '../../helpers/authContext';
+import AuthContext from '../../helpers/auth/authContext';
 
 export default function RelPowerLayout() {
-  const { auth, setData, clearData } = React.useContext(AuthContext);
+  const { auth, setData } = React.useContext(AuthContext);
 
   let csvData = (auth) ? auth.data : '';
 
   console.log(auth.data)
 
-  const rundate = new Date();
-  const runtime = `${rundate.getHours()}:${rundate.getMinutes()}`;
-  const filename = `Relative Power_${runtime}`;
+  const runDate = new Date();
+
+  const runStamp = `${runDate.getMonth()+1}${runDate.getDate()}${runDate.getFullYear()}_${runDate.getHours()}:${runDate.getMinutes()}`;
+  const filename = `Relative Power_${runStamp}`;
 
   const DownloadButton = () => {
     if(csvData) {
