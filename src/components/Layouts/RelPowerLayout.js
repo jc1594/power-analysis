@@ -9,8 +9,6 @@ export default function RelPowerLayout() {
 
   let csvData = (auth) ? auth.data : '';
 
-  console.log(auth.data)
-
   const runDate = new Date();
 
   const runStamp = `${runDate.getMonth()+1}${runDate.getDate()}${runDate.getFullYear()}_${runDate.getHours()}:${runDate.getMinutes()}`;
