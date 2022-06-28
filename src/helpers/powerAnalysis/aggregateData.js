@@ -6,7 +6,9 @@ export default function aggData(rawData) {
 
   for (let row of rawData) {
 
-    switch (row[5]) {
+    row[1] = row[1].trim()
+
+    switch (row[4]) {
 
       case 1 :
         bin = binRows(row, wakeDark, wakeLight);
@@ -30,6 +32,8 @@ export default function aggData(rawData) {
         break;
     }
   }
+
+  console.log(wakeLight)
 
   const wlTotalI = (wakeLight.length) ? sumValues(wakeLight.slice(0,7)) : 0;
   const wlTotalII = (wakeLight.length) ? sumValues(wakeLight.slice(7)) : 0;

@@ -4,7 +4,7 @@ export class CsvHelper {
     static async parseCsv(file, callback, params) {
         await Papa.parse(file, {
             header: false,
-            delimiter: ',',
+            delimiter: '\t',
             complete: (results) => {
                 callback(results.data, params);
             },
