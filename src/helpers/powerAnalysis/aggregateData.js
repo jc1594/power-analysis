@@ -31,18 +31,18 @@ export default function aggData(rawData) {
     }
   }
 
-  const wlTotalI = (wakeLight.length) ? sumValues(wakeLight.slice(0,8)) : 0;
-  const wlTotalII = (wakeLight.length) ? sumValues(wakeLight.slice(8)) : 0;
-  const wdTotalI = (wakeDark.length) ?  sumValues(wakeDark.slice(0,8)) : 0;
-  const wdTotalII = (wakeDark.length) ? sumValues(wakeDark.slice(8)) : 0;
-  const slTotalI = (sleepLight.length) ? sumValues(sleepLight.slice(0,)) : 0;
-  const slTotalII = (sleepLight.length) ? sumValues(sleepLight.slice(8)) : 0;
-  const sdTotalI = (sleepDark.length) ? sumValues(sleepDark.slice(0,8)) : 0;
-  const sdTotalII = (sleepDark.length) ? sumValues(sleepDark.slice(8)) : 0;
-  const rlTotalI = (remLight.length) ? sumValues(remLight.slice(0,8)) : 0;
-  const rlTotalII = (remLight.length) ? sumValues(remLight.slice(8)) : 0;
-  const rdTotalI = (remDark.length) ? sumValues(remDark.slice(0,8)) : 0;
-  const rdTotalII = (remDark.length) ? sumValues(remDark.slice(8)) : 0;
+  const wlTotalI = (wakeLight.length) ? sumValues(wakeLight.slice(0,7)) : 0;
+  const wlTotalII = (wakeLight.length) ? sumValues(wakeLight.slice(7)) : 0;
+  const wdTotalI = (wakeDark.length) ?  sumValues(wakeDark.slice(0,7)) : 0;
+  const wdTotalII = (wakeDark.length) ? sumValues(wakeDark.slice(7)) : 0;
+  const slTotalI = (sleepLight.length) ? sumValues(sleepLight.slice(0,7)) : 0;
+  const slTotalII = (sleepLight.length) ? sumValues(sleepLight.slice(7)) : 0;
+  const sdTotalI = (sleepDark.length) ? sumValues(sleepDark.slice(0,7)) : 0;
+  const sdTotalII = (sleepDark.length) ? sumValues(sleepDark.slice(7)) : 0;
+  const rlTotalI = (remLight.length) ? sumValues(remLight.slice(0,7)) : 0;
+  const rlTotalII = (remLight.length) ? sumValues(remLight.slice(7)) : 0;
+  const rdTotalI = (remDark.length) ? sumValues(remDark.slice(0,7)) : 0;
+  const rdTotalII = (remDark.length) ? sumValues(remDark.slice(7)) : 0;
 
 
   let wakeLightArr =  formatArr('Wake Light',wakeLight,wlTotalI,wlTotalII)
@@ -60,7 +60,6 @@ export default function aggData(rawData) {
     'EEG 2_Delta',
     'EEG 2_Theta',
     'EEG 2_High Gamma',
-    'EEG 2_Infraslow',
     'EEG 2_Sigma',
     'EEG 1_Alpha',
     'EEG 1_Beta',
@@ -68,7 +67,6 @@ export default function aggData(rawData) {
     'EEG 1_Delta',
     'EEG 1_Theta',
     'EEG 1_High Gamma',
-    'EEG 1_Infraslow',
     'EEG 1_Sigma'
   ],
     wakeLightArr,
@@ -94,7 +92,7 @@ const divByTotal = (o,total) => {
 }
 
 const formatArr = (arrName,arr,totalA,totalB) => {
-  let array = arr.slice(0,8).map(o => divByTotal(o,totalA)).concat(arr.slice(8).map(o => divByTotal(o,totalB)))
+  let array = arr.slice(0,7).map(o => divByTotal(o,totalA)).concat(arr.slice(7).map(o => divByTotal(o,totalB)))
   array.unshift(arrName)
   return array
 }

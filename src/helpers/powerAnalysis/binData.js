@@ -3,7 +3,7 @@ export default function binRows(row, darkArr, lightArr) {
   if (row[1].length > 10) {alert(`Time is incorrectly formatted: ${row[1]}`)}
 
   const time = row[1].trim()
-  row = row.slice(6,22)
+  row = row.slice(5,19)
 
   if (time >= '06:00:00' && time < '18:00:00') {
     //console.log(row[1])
