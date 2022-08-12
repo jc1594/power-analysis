@@ -4,7 +4,7 @@ import { CSVLink } from 'react-csv'
 import LoadFileForm from '../forms/loadFileForm';
 import AuthContext from '../../helpers/auth/authContext';
 
-export default function RelPowerLayout() {
+export default function RelPowerLightLayout() {
   const { auth, setData, clearData } = React.useContext(AuthContext);
 
   let csvData = (auth) ? auth.data : '';
@@ -30,7 +30,7 @@ export default function RelPowerLayout() {
 
     return (
         <main style={{ padding: '1rem 0' }}>
-            <h2>Relative Power Analysis</h2>
+            <h2>Light/Dark Power Analysis</h2>
             <LoadFileForm
                 callback={setData}
             />

@@ -16,7 +16,19 @@ const AuthProvider = ({ children }) => {
 
     //add function here to call from callback that sets data
     const setData = (data) => {
-        let powerData = powerAnalysis(data);
+        let time;
+        let powerData = powerAnalysis(data,time);
+        let auth = {'data':powerData};
+        localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
+        // console.log(
+        //   `Test Callback: ${auth.data}`
+        // );
+        window.location.reload(false); //Not the best way to do this, but effective
+    }
+
+    const setTimeData = (data) => {
+        let time = true
+        let powerData = powerAnalysis(data,time);
         let auth = {'data':powerData};
         localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
         // console.log(
@@ -27,7 +39,7 @@ const AuthProvider = ({ children }) => {
 
     const clearData = () => {
         setTimeout(() => {localStorage.removeItem(AUTH_KEY);
-        window.location.reload(false) //Not the best way to do this, but effective
+        // window.location.reload(false) //Not the best way to do this, but effective
         // alert(`Download Completed`)
         },1000)
 
@@ -37,6 +49,7 @@ const AuthProvider = ({ children }) => {
         auth,
         handleFileSubmit,
         setData,
+        setTimeData,
         clearData
     };
 
