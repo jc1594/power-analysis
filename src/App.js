@@ -15,11 +15,6 @@ export default function App() {
           <Route path="/lightdark" element={<RelPowerLightLayout />} />
           <Route path="/time" element={<RelPowerTimeLayout />} />
           <Route path="*" element={<NoMatchLayout />} />
-    {/*<div className="App">*/}
-    {/*  <header className="App-header">*/}
-    {/*    <RelPowerLightLayout/>*/}
-    {/*  </header>*/}
-    {/*</div>*/}
         </Routes>
         </div>
       </AuthProvider>

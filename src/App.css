@@ -1,5 +1,5 @@
 .App {
-  background-color: royalblue;
+  background-color: #92b4f2;
   /*text-align: center;*/
   color: midnightblue;
   padding-top: 35px;
@@ -8,11 +8,13 @@
 }
 
 .Download-button {
-  color: black;
-  background-color: white;
+  color: antiquewhite;
+  background-color: green;
   font-style: normal;
   font-size: medium;
-  border-radius: 2px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
 .App-header {
@@ -23,25 +25,17 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: antiquewhite;
 }
 
 .App-link {
-  color: #61dafb;
+  color: antiquewhite;
 }
 
 .Homepage {
-  background-color: royalblue;
-  /*position: absolute;*/
-  /*display: flex;*/
-  /*padding-top: 15px;*/
-  /*padding-left: 30%;*/
-  /*min-height: 100vh;*/
-  /*flex-direction: column;*/
-  /*align-items: flex-start;*/
-  /*justify-content: flex-start;*/
+  background-color: #92b4f2;
   font-size: calc(10px + 1vmin);
-  color: black;
+  color: midnightblue;
 }
 
 .Homepage-box {
@@ -50,13 +44,27 @@
   /*width: 50%;*/
   padding: 1% 3% 3%;
   box-shadow: 0 2px 2px 0 mediumblue;
-  background-color: ghostwhite;
+  background-color: antiquewhite;
   border-radius: 5px;
 }
 
 .Homepage-link {
   color: blue;
   padding: 5px 10px;
+  text-decoration: none;
+}
 
+.Time-Input {
+  color: black;
+  font-style: normal;
+  font-size: medium;
+  border-radius: 2px;
+  border: 5px;
+  padding: 1px;
+  margin: 10px 5px
+}
+
+.loadFileForm{
+  margin-bottom:15px
 }
 
