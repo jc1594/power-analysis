@@ -4,6 +4,7 @@ import { CSVLink } from 'react-csv';
 import LoadFileForm from '../forms/loadFileForm';
 import TimeInputForm from '../forms/timeInputForm';
 import AuthContext from '../../helpers/auth/authContext';
+import Sidebar from '../Sidebar';
 
 //todo relpowerlayout is one layout - time vs lightdark are two different layouts.
 // One has a time input field, one doesn't.
@@ -41,6 +42,7 @@ export default function RelPowerTimeLayout() {
 
   return (
     <main style={{ padding: '1rem 0' }}>
+      <Sidebar />
       <h2>Custom Power Analysis</h2>
       <TimeInputForm />
       <LoadFileForm callback={setTimeData} />

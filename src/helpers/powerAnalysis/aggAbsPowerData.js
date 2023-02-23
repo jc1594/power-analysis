@@ -3,6 +3,9 @@ import { arrAvg, arrayFactory } from '../arrHelpers';
 const groupAndPivot = (data, arrLen) => {
   const obj = {};
   for (let arr of data) {
+    if (arr[0] >= 100) {
+      break;
+    }
     let key = arr[0];
     if (!(key in obj)) {
       obj[key] = arrayFactory(arrLen);
@@ -27,7 +30,7 @@ const aggregate = (params) => {
   return arr;
 };
 
-// in effect we scan DATA twice
+// in effect, we scan DATA twice
 // so runtime is ~proportional to size of DATA
 
 export { groupAndPivot, aggregate };

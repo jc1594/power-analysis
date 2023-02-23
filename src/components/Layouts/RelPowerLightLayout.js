@@ -4,6 +4,7 @@ import FileHelper from '../../helpers/fileHelper';
 import LoadFileForm from '../forms/loadFileForm';
 import relPowerAnalysis from '../../helpers/powerAnalysis/relPowerAnalysis';
 import DownloadButton from '../forms/DownloadButton';
+import Sidebar from '../Sidebar';
 
 export default function RelPowerLightLayout() {
   const [csvData, setCsvData] = React.useState(null);
@@ -18,6 +19,7 @@ export default function RelPowerLightLayout() {
 
   return (
     <main style={{ padding: '1rem 0' }}>
+      <Sidebar />
       <h2>Light/Dark Power Analysis</h2>
       <LoadFileForm callback={callback} />
 
