@@ -1,16 +1,24 @@
 import React from 'react';
+import AuthContext from '../../helpers/auth/authContext';
 
 //TODO Prompt for start and end time? Or interval? Save into arr or num
 
+const AUTH_KEY = 'auth';
+
 const TimeInputForm = () => {
+  const auth = React.useContext(AuthContext);
   const [time, setTime] = React.useState('');
   const handleChange = (e) => setTime(e.target.value);
+  //TODO this is wrong
+  auth.time = time;
+  localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
+  console.log(auth.time);
 
   return (
     <label>
-      Time:
+      Bin Interval (Hours):
       <input
-        type="text"
+        type="number"
         value={time}
         className="Time-Input"
         onChange={handleChange}

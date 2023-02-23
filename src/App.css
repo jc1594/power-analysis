@@ -2,9 +2,12 @@
   background-color: #92b4f2;
   /*text-align: center;*/
   color: midnightblue;
-  padding-top: 35px;
-  padding-left: 30%;
+  /*padding-top: 35px;*/
+  /*padding-left: 30%;*/
+  display: flex;
   min-height: 100vh;
+  margin: auto;
+  justify-content: center;
 }
 
 .Download-button {
@@ -36,21 +39,26 @@
   background-color: #92b4f2;
   font-size: calc(10px + 1vmin);
   color: midnightblue;
+  width: 85%
 }
 
 .Homepage-box {
-  margin-top: 20%;
-  margin-right: 55%;
+  margin-top: 5%;
+  /*margin-right: 55%;*/
   /*width: 50%;*/
   padding: 1% 3% 3%;
-  box-shadow: 0 2px 2px 0 mediumblue;
+  box-shadow: 0 1px 3px 0 mediumblue;
   background-color: antiquewhite;
   border-radius: 5px;
 }
 
 .Homepage-link {
   color: blue;
-  padding: 5px 10px;
+  /*padding: 5px 10px;*/
+  display: flex;
+  /*margin: auto;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
   text-decoration: none;
 }
 
@@ -58,6 +66,8 @@
   color: black;
   font-style: normal;
   font-size: medium;
+  text-align: right;
+  width: 60px;
   border-radius: 2px;
   border: 5px;
   padding: 1px;

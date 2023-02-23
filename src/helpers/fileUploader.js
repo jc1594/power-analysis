@@ -27,7 +27,6 @@ const FileUploader = ({ onFileSelect }) => {
         variant={'contained'}
         component={'label'}
       >
-        {/*<input type="file" onChange={handleFileInput} />*/}
         Choose File
         <input hidden type={'file'} onChange={handleFileInput} />
       </Button>

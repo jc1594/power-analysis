@@ -1,24 +1,23 @@
 import React from 'react';
-import '../../App.css';
 import FileHelper from '../../helpers/fileHelper';
 import LoadFileForm from '../forms/loadFileForm';
-import relPowerAnalysis from '../../helpers/powerAnalysis/relPowerAnalysis';
 import DownloadButton from '../forms/DownloadButton';
+import absPowerAnalysis from '../../helpers/powerAnalysis/absPowerAnalysis';
 
-export default function RelPowerLightLayout() {
+export default function AbsPowerLayout() {
   const [csvData, setCsvData] = React.useState(null);
 
-  const filename = FileHelper.nameFile('rel_power');
+  const filename = FileHelper.nameFile('abs_power');
 
   const callback = (data) => {
     let time;
-    let powerData = relPowerAnalysis(data, time);
+    let powerData = absPowerAnalysis(data);
     setCsvData(powerData);
   };
 
   return (
     <main style={{ padding: '1rem 0' }}>
-      <h2>Light/Dark Power Analysis</h2>
+      <h2>Absolute Power Analysis</h2>
       <LoadFileForm callback={callback} />
 
       {csvData && <DownloadButton content={csvData} filename={filename} />}

@@ -5,7 +5,9 @@ import LoadFileForm from '../forms/loadFileForm';
 import TimeInputForm from '../forms/timeInputForm';
 import AuthContext from '../../helpers/auth/authContext';
 
-//todo relpowerlayout is one layout - time vs lightdark are two different layouts. One has a time input field, one doesn't.
+//todo relpowerlayout is one layout - time vs lightdark are two different layouts.
+// One has a time input field, one doesn't.
+// OR it's the same layout, but renders differently based on how you get there?
 // For everything else, pass through time - if it's null, render form for ld analysis
 
 export default function RelPowerTimeLayout() {

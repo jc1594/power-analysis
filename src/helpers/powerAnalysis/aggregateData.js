@@ -1,4 +1,5 @@
 import { binRows, binTimeRows } from './binData';
+import { sumValues, formatArr } from '../arrHelpers';
 
 export function aggData(rawData) {
   let wakeDark = [],
@@ -85,29 +86,33 @@ export function aggData(rawData) {
   ];
 }
 
-export function aggTimeData(rawData) {
-  let wake = [],
-    sleep = [],
-    rem = [],
+export function aggTimeData(rawData, time) {
+  let eegArrs = { wake: [], sleep: [], rem: [] },
     bin;
+
+  const binTime = time * 3600;
+
+  console.log(binTime);
 
   for (let row of rawData) {
     row[1] = row[1].trim();
 
+    //row[3];
+
     switch (row[4]) {
       case 1:
-        bin = binTimeRows(row, wake);
-        wake = bin[0] ? bin[0] : wake;
+        bin = binTimeRows(row, eegArrs.wake);
+        eegArrs.wake = bin[0] ? bin[0] : eegArrs.wake;
         break;
 
       case 2:
-        bin = binTimeRows(row, sleep);
-        sleep = bin[0] ? bin[0] : sleep;
+        bin = binTimeRows(row, eegArrs.sleep);
+        eegArrs.sleep = bin[0] ? bin[0] : eegArrs.sleep;
         break;
 
       case 3:
-        bin = binTimeRows(row, rem);
-        rem = bin[0] ? bin[0] : rem;
+        bin = binTimeRows(row, eegArrs.rem);
+        eegArrs.rem = bin[0] ? bin[0] : eegArrs.rem;
         break;
 
       default:
@@ -115,18 +120,24 @@ export function aggTimeData(rawData) {
     }
   }
 
-  // console.log(wake)
+  // for (let arr in eegArrs) {
+  //   arr.filter((a) => a[3] <= binTime);
+  // }
 
-  const wTotalI = wake.length ? sumValues(wake.slice(0, 7)) : 0;
-  const wTotalII = wake.length ? sumValues(wake.slice(7)) : 0;
-  const sTotalI = sleep.length ? sumValues(sleep.slice(0, 7)) : 0;
-  const sTotalII = sleep.length ? sumValues(sleep.slice(7)) : 0;
-  const rTotalI = rem.length ? sumValues(rem.slice(0, 7)) : 0;
-  const rTotalII = rem.length ? sumValues(rem.slice(7)) : 0;
+  console.log(eegArrs.wake);
 
-  let wakeArr = formatArr('Wake', wake, wTotalI, wTotalII);
-  let sleepArr = formatArr('Sleep', sleep, sTotalI, sTotalII);
-  let remArr = formatArr('Rem', rem, rTotalI, rTotalII);
+  const wTotalI = eegArrs.wake.length ? sumValues(eegArrs.wake.slice(0, 7)) : 0;
+  const wTotalII = eegArrs.wake.length ? sumValues(eegArrs.wake.slice(7)) : 0;
+  const sTotalI = eegArrs.sleep.length
+    ? sumValues(eegArrs.sleep.slice(0, 7))
+    : 0;
+  const sTotalII = eegArrs.sleep.length ? sumValues(eegArrs.sleep.slice(7)) : 0;
+  const rTotalI = eegArrs.rem.length ? sumValues(eegArrs.rem.slice(0, 7)) : 0;
+  const rTotalII = eegArrs.rem.length ? sumValues(eegArrs.rem.slice(7)) : 0;
+
+  let wakeArr = formatArr('Wake', eegArrs.wake, wTotalI, wTotalII);
+  let sleepArr = formatArr('Sleep', eegArrs.sleep, sTotalI, sTotalII);
+  let remArr = formatArr('Rem', eegArrs.rem, rTotalI, rTotalII);
 
   return [
     [
@@ -151,24 +162,3 @@ export function aggTimeData(rawData) {
     remArr,
   ];
 }
-
-//TODO Pull out these helpers
-
-const sumValues = (arr) => arr.reduce((a, b) => a + b);
-
-const divByTotal = (o, total) => {
-  if (total > 0) {
-    return `${(o / total) * 100}%`;
-  } else {
-    return `${0}%`;
-  }
-};
-
-const formatArr = (arrName, arr, totalA, totalB) => {
-  let array = arr
-    .slice(0, 7)
-    .map((o) => divByTotal(o, totalA))
-    .concat(arr.slice(7).map((o) => divByTotal(o, totalB)));
-  array.unshift(arrName);
-  return array;
-};

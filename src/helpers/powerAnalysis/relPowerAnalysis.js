@@ -1,7 +1,7 @@
 import { aggData, aggTimeData } from './aggregateData';
 
-export default function powerAnalysis(data, time) {
-  console.log(data);
+export default function relPowerAnalysis(data, time) {
+  // console.log(data);
   data = data
     .filter(
       (arr) =>
@@ -21,9 +21,9 @@ export default function powerAnalysis(data, time) {
       });
       return datetime.concat(arr);
     });
-  // console.log(data)
+
   if (time) {
-    data = aggTimeData(data);
+    data = aggTimeData(data, time);
   } else {
     data = aggData(data);
   }

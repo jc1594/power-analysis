@@ -2,16 +2,16 @@ import React from 'react';
 import '../../App.css';
 import authContext from '../../helpers/auth/authContext';
 import FileUploader from '../../helpers/fileUploader';
+import { Typography } from '@mui/material';
 
 const LoadFileForm = ({ callback }) => {
   const { auth, handleFileSubmit } = React.useContext(authContext);
 
   const [selectedFile, setSelectedFile] = React.useState(null);
 
-  const submitFile = (e) => {
+  const submitFile = async (e) => {
     e.preventDefault();
-    console.log('test');
-    handleFileSubmit({ auth }, callback, selectedFile);
+    void handleFileSubmit({ auth }, callback, selectedFile);
   };
 
   return (
@@ -19,6 +19,7 @@ const LoadFileForm = ({ callback }) => {
       <form onSubmit={submitFile}>
         <FileUploader onFileSelect={(file) => setSelectedFile(file)} />
       </form>
+      <Typography variant={'subtitle2'}>{selectedFile?.name}</Typography>
     </div>
   );
 };

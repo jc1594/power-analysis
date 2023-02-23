@@ -1,7 +1,9 @@
 import React from 'react';
 import AuthContext from './authContext';
 import { CsvHelper } from '../csvHelper';
-import powerAnalysis from '../powerAnalysis/powerAnalysis';
+import relPowerAnalysis from '../powerAnalysis/relPowerAnalysis';
+
+//TODO Split out data into data context provider (rather than auth) - or redefine this provider
 
 const AUTH_KEY = 'auth';
 
@@ -13,29 +15,22 @@ const AuthProvider = ({ children }) => {
     await CsvHelper.parseCsv(file, callback, params);
   };
 
-  //add function here to call from callback that sets data
-  const setData = (data) => {
-    //TODO May be able to intentionally omit this?
+  //function to call from callback that sets data
+  const setData = (setCsvData) => (data) => {
+    //TODO May be able to intentionally omit declaring time?
+    //TODO Need to get time from field, then set variable with value - then should be able to use 1 setData
+    // Probably need to clear it after
+
     let time;
-    let powerData = powerAnalysis(data, time);
-    let auth = { data: powerData };
-    localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
-    // console.log(
-    //   `Test Callback: ${auth.data}`
-    // );
-    window.location.reload(false); //Not the best way to do this, but effective
-    //Move to own context provider, put this in use state
+    let powerData = relPowerAnalysis(data, time);
+    setCsvData(powerData);
   };
 
   const setTimeData = (data) => {
     let time = true;
-    let powerData = powerAnalysis(data, time);
+    let powerData = relPowerAnalysis(data, time);
     let auth = { data: powerData };
     localStorage.setItem(AUTH_KEY, JSON.stringify(auth));
-    // console.log(
-    //   `Test Callback: ${auth.data}`
-    // );
-    window.location.reload(false); //Not the best way to do this, but effective
   };
 
   const clearData = () => {
