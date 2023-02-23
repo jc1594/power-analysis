@@ -15,13 +15,15 @@ const TimeInputForm = () => {
   console.log(auth.time);
 
   return (
+    //TODO Remove hidden field and label
     <label>
-      Bin Interval (Hours):
+      {/*Bin Interval (Hours):*/}
       <input
         type="number"
         value={time}
         className="Time-Input"
         onChange={handleChange}
+        hidden={true}
       />
     </label>
   );

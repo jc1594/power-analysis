@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import {
   THEME_PRIMARY,
   THEME_SECONDARY,
-} from '../components/MUI Themes/DisabledTheme';
+} from '../components/MUI Themes/Themes';
 
 const FileUploader = ({ onFileSelect }) => {
   const fileInput = useRef(null);
