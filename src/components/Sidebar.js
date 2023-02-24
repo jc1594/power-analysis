@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Sidebar = () => {
   return (
     <Link to="/">
-      <HomeIcon></HomeIcon>
+      <HomeIcon style={{ color: 'midnightblue', fontSize: 40 }} />
     </Link>
   );
 };

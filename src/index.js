@@ -14,7 +14,6 @@ root.render(
   </React.StrictMode>
 );
 
-//TODO material UI
 //TODO refactor auth and refresh behavior
 
 // If you want to start measuring performance in your app, pass a function
